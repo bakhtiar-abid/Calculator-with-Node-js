@@ -23,11 +23,11 @@ app.post("/", function(req, res) {
 });
 
 app.post("/bmicalculator", function (req, res) {
-    var num1 = Number(req.body.num1);
-    var num2 = Number(req.body.num2);
-   var cal = Math.round(num1 / Math.pow(num2, 2));
+    var weight = parseFloat(req.body.weight);
+    var height = parseFloat(req.body.height);
+   var bmi = Math.round(weight / Math.pow(height, 2));
 
-   var result = cal;
+   var result = bmi;
    res.send("<em><strong> Your BMI is</strong></em> " + result);
 });
 
