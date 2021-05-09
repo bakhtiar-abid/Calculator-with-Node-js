@@ -1,15 +1,23 @@
+
 const express = require("express");
+const bodyParser = require("body-parser");
+
 const app = express();
+app.use(bodyParser.urlencoded({extended: true}));
 const port = 3000;
 
-app.get("/", (req, res) => {
+app.get("/", function(req, res){
    res.sendFile(__dirname + "/index.html");
 });
 
-app.post("/", (req, res) => {
-   res.send("Congrations!!! you have just posted it Great Day");
+app.post("/", function(req, res) {
+    var num1 = Number(req.body.num1);
+    var num2 = Number(req.body.num2);
+
+    var result = num1 + num2;
+   res.send(" Congratulations!!! you have just made it " + result);
 });
 
-app.listen(port, () => {
+app.listen(port, function()  {
    console.log(`Example app listening at http://localhost:${port}`);
 });
